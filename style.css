@@ -52,9 +52,15 @@
     /* add font family to body to type once  */
  }
 
+ .currentCity{
+     text-align: center;
+     font-size: 22px;
+     padding-top: 7px;
+ }
+
  #map{
  	border: black solid 1px;
-    margin: 50px auto;
+    margin: 0 auto;
     width: 100%;
     height: 100vh;
     max-height: 500px;
@@ -70,9 +76,20 @@
     text-align: center;
 }
 
+#icon{
+    color: white;
+}
+
+
  .search{
      max-width: 500px;
      margin: 0 auto;
+     background-color: black;
+     border-radius: 5px;
+ }
+
+ .search:hover{
+    background-color: rgb(82, 82, 82);
  }
 
  /* Unit measure switch formatting is next 7 formatting sections*/
@@ -151,6 +168,13 @@ input:checked + .slider:hover:before{
 
  .favoriteButton{
      float: right;
+     background-color: black;
+     color: white;
+ }
+
+ .favoriteButton:hover{
+    background-color: rgb(82, 82, 82);
+    color: white;
  }
 
  .name{
