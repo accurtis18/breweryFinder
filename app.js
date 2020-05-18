@@ -116,12 +116,18 @@ $(document).ready(function () {
             url: queryURL,
             method: "GET"
         }).then(function (response) {
+            console.log(response);
+            if (response.features.length === 0) {
+                $("#myModal").modal();
+                return;
+            }
+            $('.currentCity').html(city);
             var map = new mapboxgl.Map({
                 container: 'map', // container id
                 style: 'mapbox://styles/mapbox/streets-v11',
                 center: [response.features[0].geometry.coordinates[0], response.features[0].geometry.coordinates[1]], // starting position
                 zoom: zoomLevel // starting zoom
-            });
+            })
             // Add zoom and rotation controls to the map.
             map.addControl(new mapboxgl.NavigationControl());
 
@@ -141,7 +147,6 @@ $(document).ready(function () {
     function onSearch(){
         city = $('#searchBrewery').val();
         $('#searchBrewery').val("")
-        $('.currentCity').html(city);
         getaddressLocation("", city.trim(), false);
     }
 
