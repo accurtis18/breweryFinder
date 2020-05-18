@@ -53,6 +53,7 @@ $(document).ready(function () {
             for (wish of wishes) {
                 $(".emptydiv").append(`<li class="list-group-item brewList"><div class='name'>
                 <a href ='#${wish.brewery}' id='result'>${wish.brewery}</a>
+                <div class= "deleteButton btn">Remove</div></div> 
                 <div class='brewery_city' id='wishCity'>${wish.myCity}</div>
                 <div class='street' id='addy'>${wish.address}</div></li>`);
             }
@@ -166,8 +167,12 @@ $(document).ready(function () {
         var checked = $('input:checked');
         if(checked.length !== 0){
             var wishCity = $(this).closest('.brewList').find('#wishCity').text();
+            console.log(wishCity);
             $('.currentCity').html(wishCity);
+            getaddressLocation(addy, wishCity, false);
+            } else{
+                getaddressLocation(addy, city, false);
             }
-        getaddressLocation(addy, city, false);
+        
 });
 });
