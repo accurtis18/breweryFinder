@@ -45,6 +45,21 @@ $(document).ready(function () {
         localStorage.setItem('wish', JSON.stringify(wishes));
     });
 
+    $(document).on("click", '.deleteButton', function () {
+        $(this).closest('.brewList').remove();
+        var brew = $(this).closest('.brewList').find('#result').text();
+        console.log(brew);
+        removeFromArray(brew);
+    });
+
+    function removeFromArray(br){
+        var arrayIndex = wishes.findIndex(x => x.brewery === br);
+        if (arrayIndex > -1){
+            wishes.splice(arrayIndex, 1);
+            localStorage.setItem("wish", JSON.stringify(wishes));
+        }
+    }
+
     var wishList = function () {
         var getWishes = JSON.parse(localStorage.getItem("wish"));
 
