@@ -1,0 +1,175 @@
+ body{
+     font-family: sans-serif;
+ }
+
+ header {
+ 	text-align: center;
+ 	width: 100%;
+ 	height: auto;
+ 	background-size: cover;
+ 	background-attachment: fixed;
+ 	position: relative;
+ 	overflow: hidden;
+    border-radius: 0 0 85% 85% / 30%;
+    margin-bottom: 50px;
+ }
+
+ header .overlay{
+ 	width: 100%;
+ 	height: 100%;
+ 	color: #FFF;
+ 	text-shadow: 1px 1px 1px #333;
+    /* remove padding of 50%, what's cuasing weird border */
+ }
+
+ .image{
+    width: 100%;
+    height: 550px;
+    background-size: cover;
+    background-attachment: relative;
+    overflow: hidden;
+    border-radius: 0 0 85% 85% / 30%;
+    margin-bottom: 50px;
+    display: inline-block;  
+    z-index: 999;
+}
+
+.headertext{
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    }
+
+ h1 {
+ 	font-size: 80px;
+ 	margin-bottom: 30px;
+ }
+
+ h3, p {
+    margin-bottom: 30px;
+    /* add font family to body to type once  */
+ }
+
+ #map{
+ 	border: black solid 1px;
+    margin: 50px auto;
+    width: 100%;
+    height: 100vh;
+    max-height: 500px;
+    max-width: 500px;
+    left: 0;
+ }
+
+ a{
+     color: black;
+ }
+
+.searchArea{
+    text-align: center;
+}
+
+ .search{
+     max-width: 500px;
+     margin: 0 auto;
+ }
+
+ /* Unit measure switch formatting is next 7 formatting sections*/
+.switch {
+  height: 42px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  text-align: center;
+  font-size: 22px;
+  margin: 4px 15px;
+  color: white;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  box-shadow: inset 0 0 10px rgb(168, 168, 168);
+  -webkit-transition: .7s;
+  transition: .7s;
+  border-radius: 5px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "Results";
+  height: 35px;
+  width: 50%;
+  left: 4px;
+  bottom: 3px;
+  background-color: black;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 6px 0px rgba(0, 0, 0, 0.2) 0px 2px 2px
+  0px;
+  -webkit-transition: .7s;
+  transition: .7s;
+  border-radius: 5px;
+}
+
+.slider:hover:before{
+    background-color: rgb(82, 82, 82);
+    color: white;
+}
+
+.slider:focus{
+	background-color: black;
+}
+
+input:checked + .slider {
+  background-color: white;
+}
+
+input:checked + .slider:before {
+  background-color: black;
+  content: "Wish List";
+  -webkit-transform: translateX(97%);
+  -ms-transform: translateX(97%);
+  transform: translateX(97%);
+}
+
+input:checked + .slider:hover:before{
+	background-color: rgb(82, 82, 82);
+}
+
+ .emptydiv{
+    margin: 0 auto;
+ }
+
+ .favoriteButton{
+     float: right;
+ }
+
+ .name{
+ 	font-size: 20px;
+ }
+
+ .brewery_type{
+ 	font-size: 15px;
+ }
+
+ .street{
+ 	font-size: 15px;
+ }
+
+ .foot{
+     text-align: center;
+ 	border: solid black 5px;
+ 	margin-top: 100px;
+ 	font-size: 14px;
+ 	background-color: burlywood;
+ 	height: auto;
+ }

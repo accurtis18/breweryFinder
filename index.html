@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+      <!-- Page details and CSS. -->
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css' rel='stylesheet' /> 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+    <link rel="stylesheet" href="./style.css">
+    <title>Brew Finder</title>
+    </head>
+<body>
+    <header>
+        <div class="overlay">
+            <img src="https://i.ibb.co/k2RGM5h/Beers-Header.png" alt="Beers-Header" class="image">
+                <div class="headertext">
+                  <h1>IPA's using API's</h1>
+                  <h3>#1 site for finding local breweries</h3>
+                  <p>To get started simply search below</p>
+                </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 searchArea">
+                <h3 class="searchtext">Type a city, Find a Brew</h3>
+                  <div class="input-group mb-3 search">
+                    <input type="text" class="form-control" placeholder="(ex. Chicago)" aria-label="City weather search" aria-describedby="button-addon2" id="searchBrewery">
+                  <div class="input-group-append">
+                    <button class="btn btn-primary" type="button" id="search"><i class="fas fa-search"></i></button>
+                  </div> 
+                </div> 
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-12 switcher">
+                        <label class="switch">
+                            <input type="checkbox" class="listSlider">
+                            <span class="slider"></span>
+                          </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="emptydiv"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div id='map'></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row foot">
+        <div class="col-md-3">
+            <h5>Footer Content</h5>
+            <p>Using two different API's we are able to provide the user with different breweries in their area.</p>
+        </div>
+        <div class="col-md-3">
+            <h5>Members</h5>
+            <ul class="list-unstyled">
+                <li>Alex Curtis</li>
+                <li>Carlos Reyes</li>
+                <li>Logan McCann</li>
+                <li>Maria Kirichenko</li>
+            </ul>
+        </div>
+        <div class="col-md-3"></div>
+        <div class="col-md-3"></div>
+    </div>
+
+      <!-- Scripts. -->
+      <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script src='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js'></script>
+      <script src="./app.js"></script>
+  </body>
+  </html>
