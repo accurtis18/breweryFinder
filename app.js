@@ -128,7 +128,7 @@ $(document).ready(function () {
             })
             } else{
                 lat = 41.8781;
-                long = 87.6298;
+                long = -87.6298;
                 var map = new mapboxgl.Map({
                     container: 'map', // container id
                     style: 'mapbox://styles/mapbox/streets-v11',
