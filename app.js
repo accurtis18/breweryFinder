@@ -104,6 +104,7 @@ $(document).ready(function () {
                     lat = position.coords.latitude;
                     long = position.coords.longitude;
                             mapboxgl.accessToken = key;
+                console.log('reached mapping');
                 var map = new mapboxgl.Map({
                     container: 'map', // container id
                     style: 'mapbox://styles/mapbox/streets-v11',
