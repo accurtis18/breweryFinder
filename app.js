@@ -112,7 +112,7 @@ $(document).ready(function () {
                 });
                 // Add zoom and rotation controls to the map.
                 map.addControl(new mapboxgl.NavigationControl());
-
+                console.log("geo worked");
                 queryURL = 'https://api.mapbox.com/geocoding/v5/mapbox.places/' + long + ","+ lat + '.json?proximity=-87.65,41.85&access_token=' + key;;
         
                     $.ajax({
@@ -129,6 +129,7 @@ $(document).ready(function () {
             } else{
                 lat = 41.8781;
                 long = -87.6298;
+                console.log("secondary was called");
                 var map = new mapboxgl.Map({
                     container: 'map', // container id
                     style: 'mapbox://styles/mapbox/streets-v11',
