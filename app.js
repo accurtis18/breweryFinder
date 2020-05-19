@@ -100,35 +100,22 @@ $(document).ready(function () {
             var long = 0;
             console.log(navigator);
 
-            navigator.geolocation.getCurrentPosition(success, error);
-                
                 function success(pos) {
                     lat = pos.coords.latitude;
                     long = pos.coords.longitude;
-                            mapboxgl.accessToken = key;
-                console.log('reached mapping');
-                var map = new mapboxgl.Map({
-                    container: 'map', // container id
-                    style: 'mapbox://styles/mapbox/streets-v11',
-                    center: [long, lat],
-                    zoom: zoomLevel // starting zoom
-                });
-                // Add zoom and rotation controls to the map.
-                map.addControl(new mapboxgl.NavigationControl());
-                console.log("geo worked");
-                queryURL = 'https://api.mapbox.com/geocoding/v5/mapbox.places/' + long + ","+ lat + '.json?proximity=-87.65,41.85&access_token=' + key;;
-        
-                    $.ajax({
-                        url: queryURL,
-                        method: "GET"
-                    }).then(function (response) {
-                        console.log(response);
-                        city = response.features[3].text;
-                        $('.currentCity').html(city);
-                        getBreweries(city);
-                    })
+                    onLanding(lat, long, zoomLevel);
+                console.log('reached mapping'+ lat + long);
+                }
 
-            }
+                function error(err) {
+                    lat = 41.8781;
+                    long = -87.6298;
+                    console.log("hit error");
+                    onLanding(lat, long, zoomLevel);
+                    console.warn(`ERROR(${err.code}): ${err.message}`);
+                  }
+                  navigator.geolocation.getCurrentPosition(success, error)
+
         } else{
             queryURL = 'https://api.mapbox.com/geocoding/v5/mapbox.places/' + nameBrewery + " " + city + '.json?&access_token=' + key;
             console.log("This was called");
@@ -164,9 +151,29 @@ $(document).ready(function () {
         }
     };
 
-    function error(err) {
-        console.warn(`ERROR(${err.code}): ${err.message}`);
-      }
+    function onLanding(la, lo, zo){
+        mapboxgl.accessToken = key;
+        var map = new mapboxgl.Map({
+            container: 'map', // container id
+            style: 'mapbox://styles/mapbox/streets-v11',
+            center: [lo, la],
+            zoom: zo // starting zoom
+        });
+        // Add zoom and rotation controls to the map.
+        map.addControl(new mapboxgl.NavigationControl());
+        queryURL = 'https://api.mapbox.com/geocoding/v5/mapbox.places/' + lo + ","+ la + '.json?&access_token=' + key;;
+
+            $.ajax({
+                url: queryURL,
+                method: "GET"
+            }).then(function (response) {
+                console.log(response);
+                city = response.features[3].text;
+                $('.currentCity').html(city);
+                getBreweries(city);
+            })
+    }
+ 
 
     function onSearch(){
         city = $('#searchBrewery').val();
