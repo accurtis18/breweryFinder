@@ -104,13 +104,11 @@ $(document).ready(function () {
                     lat = pos.coords.latitude;
                     long = pos.coords.longitude;
                     onLanding(lat, long, zoomLevel);
-                console.log('reached mapping'+ lat + long);
                 }
 
                 function error(err) {
                     lat = 41.8781;
                     long = -87.6298;
-                    console.log("hit error");
                     onLanding(lat, long, zoomLevel);
                     console.warn(`ERROR(${err.code}): ${err.message}`);
                   }

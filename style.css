@@ -164,6 +164,7 @@ input:checked + .slider:hover:before{
 
  .emptydiv{
     margin: 0 auto;
+    margin-bottom: 10px;
  }
 
  .favoriteButton{
