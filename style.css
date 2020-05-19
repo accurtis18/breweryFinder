@@ -11,7 +11,7 @@
  	position: relative;
  	overflow: hidden;
     border-radius: 0 0 85% 85% / 30%;
-    margin-bottom: 50px;
+    margin-bottom: 10px;
  }
 
  header .overlay{
@@ -29,7 +29,7 @@
     background-attachment: relative;
     overflow: hidden;
     border-radius: 0 0 85% 85% / 30%;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
     display: inline-block;  
     z-index: 999;
 }
@@ -203,9 +203,10 @@ input:checked + .slider:hover:before{
 
  .foot{
      text-align: center;
- 	border: solid black 5px;
- 	margin-top: 100px;
+     margin-top: 100px;
+     padding-top: 20px;
  	font-size: 14px;
- 	background-color: burlywood;
+     background-color: black;
+     color: white;
  	height: auto;
  }

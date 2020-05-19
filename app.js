@@ -86,6 +86,9 @@ $(document).ready(function () {
         } 
     });
     
+    //pagination for results
+    //buttons for types of breweries, micro, brewpub
+    //search by name
     function getaddressLocation(nameBrewery, city, first) {
         var queryURL = "";
         var zoomLevel = 0;
@@ -115,8 +118,9 @@ $(document).ready(function () {
                   navigator.geolocation.getCurrentPosition(success, error)
 
         } else{
-            queryURL = 'https://api.mapbox.com/geocoding/v5/mapbox.places/' + nameBrewery + " " + city + '.json?&access_token=' + key;
-            console.log("This was called");
+            var address = nameBrewery.replace(/[\/\\#,+()$~%'":*?<>{}]/g, '');
+            queryURL = 'https://api.mapbox.com/geocoding/v5/mapbox.places/' + address + " " + city + '.json?&access_token=' + key;
+            console.log(queryURL);
             $.ajax({
             url: queryURL,
             method: "GET"
