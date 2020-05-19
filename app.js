@@ -100,9 +100,11 @@ $(document).ready(function () {
             var long = 0;
             console.log(navigator);
 
-            navigator.geolocation.getCurrentPosition(position => {
-                    lat = position.coords.latitude;
-                    long = position.coords.longitude;
+            navigator.geolocation.getCurrentPosition(success, error);
+                
+                function success(pos) {
+                    lat = pos.coords.latitude;
+                    long = pos.coords.longitude;
                             mapboxgl.accessToken = key;
                 console.log('reached mapping');
                 var map = new mapboxgl.Map({
@@ -126,7 +128,7 @@ $(document).ready(function () {
                         getBreweries(city);
                     })
 
-            })
+            }
         } else{
             queryURL = 'https://api.mapbox.com/geocoding/v5/mapbox.places/' + nameBrewery + " " + city + '.json?&access_token=' + key;
             console.log("This was called");
@@ -161,6 +163,10 @@ $(document).ready(function () {
         });
         }
     };
+
+    function error(err) {
+        console.warn(`ERROR(${err.code}): ${err.message}`);
+      }
 
     function onSearch(){
         city = $('#searchBrewery').val();
