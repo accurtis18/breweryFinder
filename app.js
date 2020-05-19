@@ -99,7 +99,7 @@ $(document).ready(function () {
             var lat = 0;
             var long = 0;
             console.log(navigator);
-            if (navigator.geolocation){
+
             navigator.geolocation.getCurrentPosition(position => {
                     lat = position.coords.latitude;
                     long = position.coords.longitude;
@@ -126,31 +126,6 @@ $(document).ready(function () {
                     })
 
             })
-            } else{
-                lat = 41.8781;
-                long = -87.6298;
-                console.log("secondary was called");
-                var map = new mapboxgl.Map({
-                    container: 'map', // container id
-                    style: 'mapbox://styles/mapbox/streets-v11',
-                    center: [long, lat],
-                    zoom: zoomLevel // starting zoom
-                });
-                // Add zoom and rotation controls to the map.
-                map.addControl(new mapboxgl.NavigationControl());
-
-                queryURL = 'https://api.mapbox.com/geocoding/v5/mapbox.places/' + long + ","+ lat + '.json?proximity=-87.65,41.85&access_token=' + key;;
-        
-                    $.ajax({
-                        url: queryURL,
-                        method: "GET"
-                    }).then(function (response) {
-                        console.log(response);
-                        city = response.features[3].text;
-                        $('.currentCity').html(city);
-                        getBreweries(city);
-                    })
-            }
         } else{
             queryURL = 'https://api.mapbox.com/geocoding/v5/mapbox.places/' + nameBrewery + " " + city + '.json?&access_token=' + key;
             console.log("This was called");
