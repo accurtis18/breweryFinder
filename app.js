@@ -114,7 +114,7 @@ $(document).ready(function () {
                     lat = 41.8781;
                     long = -87.6298;
                     onLanding(lat, long, zoomLevel);
-                    console.log("fail");
+                    console.log(err);
                     console.warn(`ERROR(${err.code}): ${err.message}`);
                   }
                   navigator.geolocation.getCurrentPosition(success, error)

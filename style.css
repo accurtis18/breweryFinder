@@ -14,7 +14,6 @@ header{
  .currentCity{
      text-align: center;
      font-size: 22px;
-     padding-top: 7px;
  }
 
  #map{
@@ -38,7 +37,6 @@ header{
 #icon{
     color: white;
 }
-
 
  .search{
      max-width: 500px;
@@ -126,27 +124,16 @@ input:checked + .slider:hover:before{
     margin-bottom: 10px;
  }
 
- .favoriteButton{
+ .favoriteButton, .deleteButton{
      float: right;
      background-color: black;
      color: white;
  }
 
- .favoriteButton:hover{
+ .favoriteButton:hover, .deleteButton:hover{
     background-color: rgb(82, 82, 82);
     color: white;
  }
-
- .deleteButton{
-    float: right;
-    background-color: black;
-    color: white;
-}
-
-.deleteButton:hover{
-   background-color: rgb(82, 82, 82);
-   color: white;
-}
 
  .name{
  	font-size: 20px;
@@ -164,7 +151,7 @@ input:checked + .slider:hover:before{
      text-align: center;
      margin-top: 100px;
      padding-top: 20px;
- 	font-size: 14px;
+ 	    font-size: 14px;
      background-color: black;
      color: white;
  }
