@@ -10,11 +10,8 @@ $(document).ready(function () {
             url: queryURL,
             method: "GET"
         }).then(function (response) {
+            console.log(response);
             $('.emptydiv').empty();
-            $('.name').empty();
-            $('.brewery_type').empty();
-            $('.street').empty();
-            $('.favoriteButton').empty();
 
             if (response.length === 0) {
                 $("#myModal").modal();
@@ -89,6 +86,9 @@ $(document).ready(function () {
     //pagination for results
     //buttons for types of breweries, micro, brewpub
     //search by name
+    //needs to be rewritten to pass zip code to brewery finder/brew finder use zip not city
+    //need it to not update brewery list on click of line item
+    //see if adding too many maps each time, instead update exisitng map
     function getaddressLocation(nameBrewery, city, first) {
         var queryURL = "";
         var zoomLevel = 0;
@@ -107,12 +107,14 @@ $(document).ready(function () {
                     lat = pos.coords.latitude;
                     long = pos.coords.longitude;
                     onLanding(lat, long, zoomLevel);
+                    console.log("success")
                 }
 
                 function error(err) {
                     lat = 41.8781;
                     long = -87.6298;
                     onLanding(lat, long, zoomLevel);
+                    console.log("fail");
                     console.warn(`ERROR(${err.code}): ${err.message}`);
                   }
                   navigator.geolocation.getCurrentPosition(success, error)
@@ -196,6 +198,8 @@ $(document).ready(function () {
 
     $('.emptydiv').on("click", '#result', function(){
         var addy = $(this).closest('.brewList').find('#addy').text();
+        var brewery = $(this).closest('#result').text();
+        console.log(brewery);
         var checked = $('input:checked');
         if(checked.length !== 0){
             var wishCity = $(this).closest('.brewList').find('#wishCity').text();
@@ -203,7 +207,7 @@ $(document).ready(function () {
             $('.currentCity').html(wishCity);
             getaddressLocation(addy, wishCity, false);
             } else{
-                getaddressLocation(addy, city, false);
+                getaddressLocation(brewery, city, false);
             }
         
 });

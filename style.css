@@ -2,55 +2,14 @@
      font-family: sans-serif;
  }
 
- header {
- 	text-align: center;
- 	width: 100%;
- 	height: auto;
- 	background-size: cover;
- 	background-attachment: fixed;
- 	position: relative;
- 	overflow: hidden;
-    border-radius: 0 0 85% 85% / 30%;
-    margin-bottom: 10px;
- }
-
- header .overlay{
- 	width: 100%;
- 	height: 100%;
- 	color: #FFF;
- 	text-shadow: 1px 1px 1px #333;
-    /* remove padding of 50%, what's cuasing weird border */
- }
-
- .image{
-    width: 100%;
-    height: 550px;
-    background-size: cover;
-    background-attachment: relative;
-    overflow: hidden;
-    border-radius: 0 0 85% 85% / 30%;
-    margin-bottom: 20px;
-    display: inline-block;  
-    z-index: 999;
+header{
+  background-image: url("./image.jpeg");
+  background-size: cover;
+  background-position: 0 67%;
+  width: 100%;
+  height: 270px;
+  margin-bottom: 30px;
 }
-
-.headertext{
-    color: white;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    }
-
- h1 {
- 	font-size: 80px;
- 	margin-bottom: 30px;
- }
-
- h3, p {
-    margin-bottom: 30px;
-    /* add font family to body to type once  */
- }
 
  .currentCity{
      text-align: center;
@@ -208,5 +167,4 @@ input:checked + .slider:hover:before{
  	font-size: 14px;
      background-color: black;
      color: white;
- 	height: auto;
  }
