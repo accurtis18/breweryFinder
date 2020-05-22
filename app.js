@@ -19,9 +19,8 @@ $(document).ready(function () {
             var i = 0;
             while (i < response.length && i < 10) {
                 if (response[i].brewery_type === "planning") { i++; continue; };
-                $('.emptydiv').append(`<li class="list-group-item brewList"><div class='name ${i}'><a href='#${response[i].name}' id='result'>${response[i].name}</a>
-                <div class= "favoriteButton btn">Add To Wish List</div></div> 
-                <div class='brewery_type'>${response[i].brewery_type}</div>
+                $('.emptydiv').append(`<li class="list-group-item brewList"><div class='name ${i}'><a href='#${response[i].name}' id='result'>${response[i].name}</a></div> 
+                <div class='brewery_type'>${response[i].brewery_type}<div class= "favoriteButton btn">Add To Wish List</div></div>
                 <div class='street' id="addy">${response[i].street}</div>
                 </li>`);
                 i++
@@ -32,8 +31,14 @@ $(document).ready(function () {
     var wishes = [];
 
     $(document).on("click", '.favoriteButton', function () {
+        var getWishes = JSON.parse(localStorage.getItem("wish"));
+        wishes = getWishes;
         var addy = $(this).closest('.brewList').find('#addy').text();
         var brew = $(this).closest('.brewList').find('#result').text();
+        var arrayIndex = wishes.findIndex(x => x.brewery == brew.trim());
+        if (arrayIndex > -1) {
+            return;
+        }
         wishes.push({
             myCity: city,
             address: addy,
@@ -64,9 +69,8 @@ $(document).ready(function () {
             wishes = getWishes;
             for (wish of wishes) {
                 $(".emptydiv").append(`<li class="list-group-item brewList"><div class='name'>
-                <a href ='#${wish.brewery}' id='result'>${wish.brewery}</a>
-                <div class= "deleteButton btn">Remove</div></div> 
-                <div class='brewery_city' id='wishCity'>${wish.myCity}</div>
+                <a href ='#${wish.brewery}' id='result'>${wish.brewery}</a></div> 
+                <div class='brewery_city' id='wishCity'>${wish.myCity}<div class= "deleteButton btn">Remove</div></div>
                 <div class='street' id='addy'>${wish.address}</div></li>`);
             }
         }
@@ -181,7 +185,8 @@ $(document).ready(function () {
 
     function onSearch(){
         city = $('#searchBrewery').val();
-        $('#searchBrewery').val("")
+        $('#searchBrewery').val("");
+        $('.listSlider').prop("checked", false);
         getaddressLocation("", city.trim(), false);
     }
 
