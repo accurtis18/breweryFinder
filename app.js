@@ -7,7 +7,6 @@ $(document).ready(function () {
 
     function getBreweries(newCity) {
         breweries = [];
-        currentPage = 1;
         city = newCity;
         var queryURL = 'https://api.openbrewerydb.org/breweries?by_city=' + city;
         $.ajax({
@@ -140,7 +139,7 @@ $(document).ready(function () {
             for (wish of wishes) {
                 $(".emptydiv").append(`<li class="list-group-item brewList"><div class='name'>
                 <a href ='#${wish.brewery}' id='result'>${wish.brewery}</a></div> 
-                <div class='brewery_city' id='wishCity'>${wish.myCity}<div class= "deleteButton btn">Remove</div></div>
+                <div class='brewery_city'><span id='wishCity'>${wish.myCity}</span><div class="deleteButton btn" id="remove">Remove</div></div>
                 <div class='street' id='addy'>${wish.address}</div></li>`);
             }
         }
@@ -257,6 +256,7 @@ $(document).ready(function () {
         city = $('#searchBrewery').val();
         $('#searchBrewery').val("");
         $('.listSlider').prop("checked", false);
+        currentPage = 1;
         getaddressLocation("", city.trim(), false);
     }
 
