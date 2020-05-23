@@ -1,9 +1,13 @@
 $(document).ready(function () {
     var city = '';
     var key = 'pk.eyJ1IjoiYWNjdXJ0aXMiLCJhIjoiY2thMjF1Y3JtMDdqMzNmbzV3aTE3ZWUybSJ9.cShGDmb0UQmaDdU3ur9tdQ';
+    var breweries = [];
+    var currentPage = 1;
     getaddressLocation("", city, true);
 
     function getBreweries(newCity) {
+        breweries = [];
+        currentPage = 1;
         city = newCity;
         var queryURL = 'https://api.openbrewerydb.org/breweries?by_city=' + city;
         $.ajax({
@@ -17,16 +21,79 @@ $(document).ready(function () {
                 $("#myModal").modal();
             }
             var i = 0;
-            while (i < response.length && i < 10) {
+            while (i < response.length) {
                 if (response[i].brewery_type === "planning") { i++; continue; };
-                $('.emptydiv').append(`<li class="list-group-item brewList"><div class='name ${i}'><a href='#${response[i].name}' id='result'>${response[i].name}</a></div> 
-                <div class='brewery_type'>${response[i].brewery_type}<div class= "favoriteButton btn">Add To Wish List</div></div>
-                <div class='street' id="addy">${response[i].street}</div>
-                </li>`);
+                breweries.push(response[i]);
                 i++
             }
+
+            pagination(breweries, currentPage);
         });
     };
+
+    function pagination(brew, currPage){
+        $('.emptydiv').empty();
+        $('.page').empty();
+            console.log(brew);
+            var x = 0;
+            var pages = Math.ceil(brew.length / 5)
+            if(currPage === 0 || currPage > pages){
+                currentPage--;
+                return;
+            }
+            console.log(pages);
+            var showPage = 5 * currPage;
+            var i = -5 + showPage;
+            var y = 0;
+            while (i < brew.length && y < 5) {
+                $('.emptydiv').append(`<li class="list-group-item brewList"><div class='name ${i}'><a href='#${brew[i].name}' id='result'>${brew[i].name}</a></div> 
+                <div class='brewery_type'>${brew[i].brewery_type}<div class= "favoriteButton btn">Add To Wish List</div></div>
+                <div class='street' id="addy">${brew[i].street}</div>
+                </li>`);
+                y++;
+                i++;
+            }
+            while(x < pages && x < 5){
+                var clsNum = x - 1;
+                var cls = '.previous' + clsNum;
+                if(x === 0){
+                    $('.emptydiv').append(`<nav class="pageBar" aria-label="...">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item">
+                          <a class="page-link previous" href="#" tabindex="-1">Previous</a></li>
+                          <li class="page-item previous${x} pgNm" aria-current="page"><a class="page-link" href="#">${(x +1)}<span class="sr-only">(current)</span></a></li>
+                        <li class="page-item">
+            <a class="page-link next" href="#">Next</a>
+          </li>
+        </ul>
+      </nav>`)
+                } else{
+                    $(`<li class="page-item previous${x} pgNm"><a class="page-link" href="#">${(x +1)}</a></li>`).insertAfter(cls);
+                }
+                x++;
+            }
+    }
+
+    $(document).on("click", '.next', function (){
+        console.log("clicked next")
+        currentPage++;
+        pagination(breweries, currentPage);
+        return false;
+    });
+
+    $(document).on("click", '.previous', function (){
+        console.log("clicked next")
+        currentPage--;
+        pagination(breweries, currentPage);
+        return false;
+    });
+
+    $(document).on("click", '.pgNm', function(){
+        currentPage = parseInt($(this).closest(".pgNm").text());
+        console.log(currentPage);
+        pagination(breweries, currentPage);
+        return false;
+    })
 
     var wishes = [];
 

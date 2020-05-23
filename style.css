@@ -125,6 +125,20 @@ input:checked + .slider:hover:before{
     margin-bottom: 10px;
  }
 
+ .pagination{
+   margin: 0 auto;
+ }
+
+ .page-link{
+   color: white;
+   background-color: black;
+ }
+
+ .page-link:hover{
+  background-color: rgb(82, 82, 82);
+  color: white;
+ }
+
  .favoriteButton, .deleteButton{
      float: right;
      background-color: black;
