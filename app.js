@@ -32,15 +32,18 @@ $(document).ready(function () {
     };
 
     function pagination(brew, currPage){
+        var pages = Math.ceil(brew.length / 5)
+        if(currPage === 0){
+            currentPage++;
+            return;
+        } else if(currPage > pages){
+            currentPage--;
+            return;
+        }
         $('.emptydiv').empty();
         $('.page').empty();
             console.log(brew);
             var x = 0;
-            var pages = Math.ceil(brew.length / 5)
-            if(currPage === 0 || currPage > pages){
-                currentPage--;
-                return;
-            }
             console.log(pages);
             var showPage = 5 * currPage;
             var i = -5 + showPage;
@@ -75,8 +78,8 @@ $(document).ready(function () {
     }
 
     $(document).on("click", '.next', function (){
-        console.log("clicked next")
         currentPage++;
+        console.log(currentPage)
         pagination(breweries, currentPage);
         return false;
     });
