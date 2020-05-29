@@ -162,6 +162,10 @@ input:checked + .slider:hover:before{
  	font-size: 15px;
  }
 
+ .apiLink{
+   color: white;
+ }
+
  .foot{
      text-align: center;
      margin-top: 100px;

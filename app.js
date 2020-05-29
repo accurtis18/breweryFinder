@@ -41,9 +41,7 @@ $(document).ready(function () {
         }
         $('.emptydiv').empty();
         $('.page').empty();
-            console.log(brew);
             var x = 0;
-            console.log(pages);
             var showPage = 5 * currPage;
             var i = -5 + showPage;
             var y = 0;
@@ -78,13 +76,11 @@ $(document).ready(function () {
 
     $(document).on("click", '.next', function (){
         currentPage++;
-        console.log(currentPage)
         pagination(breweries, currentPage);
         return false;
     });
 
     $(document).on("click", '.previous', function (){
-        console.log("clicked next")
         currentPage--;
         pagination(breweries, currentPage);
         return false;
@@ -92,7 +88,6 @@ $(document).ready(function () {
 
     $(document).on("click", '.pgNm', function(){
         currentPage = parseInt($(this).closest(".pgNm").text());
-        console.log(currentPage);
         pagination(breweries, currentPage);
         return false;
     })
@@ -251,7 +246,6 @@ $(document).ready(function () {
             })
     }
  
-
     function onSearch(){
         city = $('#searchBrewery').val();
         $('#searchBrewery').val("");
