@@ -99,7 +99,7 @@ $(document).ready(function () {
         wishes = getWishes;
         var addy = $(this).closest('.brewList').find('#addy').text();
         var brew = $(this).closest('.brewList').find('#result').text();
-        var arrayIndex = wishes.findIndex(x => x.brewery == brew.trim());
+        var arrayIndex = wishes.findIndex(x => x != null && x.brewery == brew.trim());
         console.log(arrayIndex);
         if (arrayIndex > -1) {
             return;
