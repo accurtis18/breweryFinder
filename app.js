@@ -100,6 +100,7 @@ $(document).ready(function () {
         var addy = $(this).closest('.brewList').find('#addy').text();
         var brew = $(this).closest('.brewList').find('#result').text();
         var arrayIndex = wishes.findIndex(x => x.brewery == brew.trim());
+        console.log(arrayIndex);
         if (arrayIndex > -1) {
             return;
         }
