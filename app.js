@@ -2,6 +2,7 @@ $(document).ready(function () {
     var city = '';
     var key = 'pk.eyJ1IjoiYWNjdXJ0aXMiLCJhIjoiY2thMjF1Y3JtMDdqMzNmbzV3aTE3ZWUybSJ9.cShGDmb0UQmaDdU3ur9tdQ';
     var breweries = [];
+    var wishes = [];
     var currentPage = 1;
     getaddressLocation("", city, true);
 
@@ -92,24 +93,37 @@ $(document).ready(function () {
         return false;
     })
 
-    var wishes = [];
+    
 
     $(document).on("click", '.favoriteButton', function () {
+        console.log("clicked");
         var getWishes = JSON.parse(localStorage.getItem("wish"));
         wishes = getWishes;
         var addy = $(this).closest('.brewList').find('#addy').text();
         var brew = $(this).closest('.brewList').find('#result').text();
-        var arrayIndex = wishes.findIndex(x => x != null && x.brewery == brew.trim());
-        console.log(arrayIndex);
-        if (arrayIndex > -1) {
-            return;
+        console.log(addy, brew);
+        var arrayIndex = 0;
+        if (wishes == null){
+            arrayIndex = -1;
+            wishes = [];
+            wishes.push({
+                myCity: city,
+                address: addy,
+                brewery: brew
+            })
+            localStorage.setItem('wish', JSON.stringify(wishes));
+        } else{
+            arrayIndex = wishes.findIndex(x => x.brewery == brew.trim());
+            if (arrayIndex > -1) {
+                return;
+            }
+            wishes.push({
+                myCity: city,
+                address: addy,
+                brewery: brew
+            })
+            localStorage.setItem('wish', JSON.stringify(wishes));
         }
-        wishes.push({
-            myCity: city,
-            address: addy,
-            brewery: brew
-        })
-        localStorage.setItem('wish', JSON.stringify(wishes));
     });
 
     $(document).on("click", '.deleteButton', function () {
